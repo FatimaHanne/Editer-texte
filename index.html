@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Éditeur de texte</title>
+</head>
+<body>
+    <div class="container">
+        <div class="toolbar">
+           <div class="head">
+                <input type="text" placeholder="Nom du fichier" value="Titre du document">
+
+                <select id="file-options">
+                    <option value="" selected hidden disabled>Fichier</option>
+                    <option value="new">Nouveau fichier</option>
+                    <option value="download-pdf">Télécharger en PDF</option>
+                    <option value="download-doc">Télécharger en doc</option>
+                </select>
+               <select id="styles" title="Style de texte">
+                    <option value="" selected="" hidden="" disabled>Format</option>
+                    <option value="h1">Titre 1</option>
+                    <option value="h2">Titre 2</option>
+                    <option value="h3">Titre 3</option>
+                    <option value="h4">Titre 4</option>
+                    <option value="h5">Titre 5</option>
+                    <option value="p">Paragraphe</option>
+                </select>
+
+                <select id="font-select" title="Police">
+                    <option value="Arial" selected>Arial</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Impact">Impact</option>
+                </select>
+
+                <select id="zoom-select" title="Zoom">
+                    <option value="50">50%</option>
+                    <option value="75">75%</option>
+                    <option value="90">90%</option>
+                    <option value="100" selected>100%</option>
+                    <option value="125">125%</option>
+                    <option value="150">150%</option>
+                    <option value="200">200%</option>
+                </select>
+
+                <select id="font-size" title="Taille du texte">
+                    <option value="12px">12px</option>
+                    <option value="14px">14px</option>
+                    <option value="16px" selected>16px</option>
+                    <option value="18px">18px</option>
+                    <option value="20px">20px</option>
+                    <option value="24px">24px</option>
+                </select>
+           </div>
+            <div class="btn-toolbar">
+
+                <button title="Annuler"><i class="fa-solid fa-arrow-left"></i></button>
+                <button title="Rétablir"><i class="fa-solid fa-arrow-right"></i></button>
+                <button title="Gras"><i class="fa-solid fa-bold"></i></button>
+                <button title="Italic"><i class="fa-solid fa-italic"></i></button>
+                <button title="Souligner"><i class="fa-solid fa-underline"></i></button>
+                <button title="Barré"><i class="fas fa-strikethrough"></i></button>
+                <button title="Aligner à gauche"><i class="fas fa-align-left"></i></button>
+                <button title="Centrer"><i class="fas fa-align-center"></i></button>
+                <button title="Aligner à droite"><i class="fas fa-align-right"></i></button>
+                <button title="Justifier"><i class="fas fa-align-justify"></i></button>
+                <button title="Liste non ordonnée"><i class="fas fa-list-ul"></i></button>
+                <button title="Liste ordonnée"><i class="fas fa-list-ol"></i></button>
+                 
+                <div class="color" title="Couleur du texte">
+                    <span><i class="fa-solid fa-palette"></i></span>
+                    <input type="color" oninput="formatDoc('foreColor', this.value)">
+                </div>
+
+                <div class="color" title="Couleur de fond">
+                    <span><i class="fa-solid fa-fill-drip"></i></span>
+                    <input type="color" oninput="formatDoc('hiliteColor', this.value)">
+                </div>
+            </div>
+        </div>
+
+        <div id="content" contenteditable="true" spellcheck="false">
+           
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
