@@ -146,27 +146,18 @@ function newFile() {
 
 // Fonction pour télécharger en PDF (simulation)
 function downloadAsPDF() {
-    // Note: Pour une vraie conversion PDF, vous devriez utiliser une bibliothèque comme jsPDF
-    const filename = filenameInput.value || 'document';
+    const { jsPDF } = window.jspdf; 
+
+    const doc = new jsPDF();
+
+
+    const contentText = content.innerText || content.textContent;
     
-    // Simulation d'un téléchargement PDF
-    const printWindow = window.open('', '_blank');
-    printWindow.document.write(`
-        <html>
-        <head>
-            <title>${filename}</title>
-            <style>
-                body { font-family: Arial, sans-serif; margin: 20px; }
-            </style>
-        </head>
-        <body>
-            ${content.innerHTML}
-        </body>
-        </html>
-    `);
-    printWindow.document.close();
-    printWindow.print();
+    doc.text(contentText, 10, 10); 
+    const filename = filenameInput.value || 'document';
+    doc.save(filename + '.pdf'); // Télécharge le fichier PDF généré
 }
+
 
 // Fonction pour télécharger en DOC
 function downloadAsDoc() {
